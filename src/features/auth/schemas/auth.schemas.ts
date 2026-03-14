@@ -37,6 +37,9 @@ export const registerSchema = z
       .min(1, "Şifre gereklidir")
       .min(6, "Şifre en az 6 karakter olmalıdır"),
     passwordConfirm: z.string().min(1, "Şifre tekrarı gereklidir"),
+    acceptTerms: z
+      .boolean()
+      .refine((val) => val === true, "Koşulları kabul etmelisiniz"),
   })
   .refine((data) => data.password === data.passwordConfirm, {
     message: "Şifreler eşleşmiyor",

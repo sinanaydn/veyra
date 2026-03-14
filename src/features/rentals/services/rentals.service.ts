@@ -43,6 +43,46 @@ export const rentalsService = {
       .slice(0, limit);
   },
 
+  async getUpcoming(userId: string): Promise<Reservation[]> {
+    await delay(200);
+    const now = new Date();
+    return mockReservations
+      .filter(
+        (r) =>
+          r.userId === userId &&
+          (r.status === "CONFIRMED" || r.status === "PENDING") &&
+          new Date(r.pickupDateTime) > now
+      )
+      .sort(
+        (a, b) =>
+          new Date(a.pickupDateTime).getTime() -
+          new Date(b.pickupDateTime).getTime()
+      );
+  },
+
+  async getUserStats(userId: string): Promise<{
+    total: number;
+    active: number;
+    completed: number;
+    totalSpent: number;
+  }> {
+    await delay(150);
+    const userRes = mockReservations.filter((r) => r.userId === userId);
+    return {
+      total: userRes.length,
+      active: userRes.filter(
+        (r) =>
+          r.status === "CONFIRMED" ||
+          r.status === "ACTIVE" ||
+          r.status === "PENDING"
+      ).length,
+      completed: userRes.filter((r) => r.status === "COMPLETED").length,
+      totalSpent: userRes
+        .filter((r) => r.status === "COMPLETED")
+        .reduce((sum, r) => sum + r.grandTotal, 0),
+    };
+  },
+
   async getStats(): Promise<{
     total: number;
     pending: number;

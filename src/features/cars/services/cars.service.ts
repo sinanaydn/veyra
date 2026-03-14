@@ -110,4 +110,32 @@ export const carsService = {
       )
       .slice(0, limit);
   },
+
+  // --- Admin mutations (mock) ---
+
+  async create(data: Omit<Car, "id" | "slug">): Promise<Car> {
+    await delay(500);
+    const id = `car-${Date.now()}`;
+    const slug = `${data.brandName}-${data.modelName}-${data.year}`
+      .toLowerCase()
+      .replace(/\s+/g, "-");
+    const newCar: Car = { ...data, id, slug };
+    mockCars.push(newCar);
+    return newCar;
+  },
+
+  async update(id: string, data: Partial<Car>): Promise<Car> {
+    await delay(500);
+    const index = mockCars.findIndex((c) => c.id === id);
+    if (index === -1) throw new Error("Araç bulunamadı.");
+    mockCars[index] = { ...mockCars[index], ...data };
+    return mockCars[index];
+  },
+
+  async remove(id: string): Promise<void> {
+    await delay(400);
+    const index = mockCars.findIndex((c) => c.id === id);
+    if (index === -1) throw new Error("Araç bulunamadı.");
+    mockCars.splice(index, 1);
+  },
 };

@@ -9,7 +9,9 @@ export const rentalKeys = {
   byStatus: (status: ReservationStatus) =>
     ["rentals", "status", status] as const,
   recent: (limit?: number) => ["rentals", "recent", limit] as const,
+  upcoming: (userId: string) => ["rentals", "upcoming", userId] as const,
   stats: ["rentals", "stats"] as const,
+  userStats: (userId: string) => ["rentals", "userStats", userId] as const,
 };
 
 export function useRentals() {
@@ -39,6 +41,22 @@ export function useRecentRentals(limit?: number) {
   return useQuery({
     queryKey: rentalKeys.recent(limit),
     queryFn: () => rentalsService.getRecent(limit),
+  });
+}
+
+export function useUpcomingRentals(userId: string) {
+  return useQuery({
+    queryKey: rentalKeys.upcoming(userId),
+    queryFn: () => rentalsService.getUpcoming(userId),
+    enabled: !!userId,
+  });
+}
+
+export function useUserStats(userId: string) {
+  return useQuery({
+    queryKey: rentalKeys.userStats(userId),
+    queryFn: () => rentalsService.getUserStats(userId),
+    enabled: !!userId,
   });
 }
 

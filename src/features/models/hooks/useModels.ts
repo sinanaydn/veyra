@@ -3,6 +3,7 @@ import { modelsService } from "../services/models.service";
 
 export const modelKeys = {
   all: ["models"] as const,
+  withStats: ["models", "stats"] as const,
   byBrand: (brandId: string) => ["models", "brand", brandId] as const,
 };
 
@@ -10,6 +11,13 @@ export function useModels() {
   return useQuery({
     queryKey: modelKeys.all,
     queryFn: () => modelsService.getAll(),
+  });
+}
+
+export function useModelsWithStats() {
+  return useQuery({
+    queryKey: modelKeys.withStats,
+    queryFn: () => modelsService.getAllWithStats(),
   });
 }
 
