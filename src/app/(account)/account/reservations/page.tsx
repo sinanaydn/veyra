@@ -105,7 +105,7 @@ export default function ReservationsPage() {
                   <Button>Araç Kirala</Button>
                 </Link>
               }
-              className="rounded-xl border border-dashed border-border/60 py-12"
+              className="rounded-xl border border-dashed border-border/70 py-12"
             />
           ) : (
             <div className="space-y-3">
@@ -153,7 +153,7 @@ function ReservationDetail({
 
       <div className="grid gap-4 sm:grid-cols-2">
         {/* Reservation Info */}
-        <div className="rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5 space-y-3">
+        <div className="rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50 space-y-3">
           <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
             Rezervasyon Bilgileri
           </h3>
@@ -172,7 +172,7 @@ function ReservationDetail({
         </div>
 
         {/* Location Info */}
-        <div className="rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5 space-y-3">
+        <div className="rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50 space-y-3">
           <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
             Lokasyon
           </h3>
@@ -183,7 +183,7 @@ function ReservationDetail({
       </div>
 
       {/* Price Summary */}
-      <div className="rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5">
+      <div className="rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50">
         <h3 className="mb-3 text-sm font-semibold text-muted-foreground uppercase tracking-wider">
           Fiyat Özeti
         </h3>
@@ -202,7 +202,7 @@ function ReservationDetail({
             <span className="text-muted-foreground">Depozito</span>
             <span>{formatCurrency(reservation.deposit)}</span>
           </div>
-          <div className="flex justify-between border-t border-border/40 pt-2 font-semibold">
+          <div className="flex justify-between border-t border-border/50 pt-2 font-semibold">
             <span>Toplam</span>
             <span className="text-primary">{formatCurrency(reservation.grandTotal)}</span>
           </div>

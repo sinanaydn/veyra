@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, ChevronRight, Loader2 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/lib/constants/routes";
 import { useBookingStore } from "@/lib/store/booking.store";
@@ -41,20 +42,25 @@ export default function PaymentPage() {
     setPaymentInfo(values);
     setProcessing(true);
 
-    // Mock payment processing
-    await new Promise((r) => setTimeout(r, 2000));
+    try {
+      // Mock payment processing
+      await new Promise((r) => setTimeout(r, 2000));
 
-    // Mock booking result
-    const code = `VYR-${Date.now().toString(36).toUpperCase().slice(-6)}`;
-    setBookingResult({
-      reservationId: crypto.randomUUID(),
-      reservationCode: code,
-      createdAt: new Date().toISOString(),
-    });
+      // Mock booking result
+      const code = `VYR-${Date.now().toString(36).toUpperCase().slice(-6)}`;
+      setBookingResult({
+        reservationId: crypto.randomUUID(),
+        reservationCode: code,
+        createdAt: new Date().toISOString(),
+      });
 
-    setProcessing(false);
-    setStep("confirmation");
-    router.push(ROUTES.BOOKING_CONFIRMATION);
+      setStep("confirmation");
+      router.push(ROUTES.BOOKING_CONFIRMATION);
+    } catch {
+      toast.error("Ödeme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin.");
+    } finally {
+      setProcessing(false);
+    }
   };
 
   return (

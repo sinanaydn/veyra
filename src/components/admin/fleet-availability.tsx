@@ -36,7 +36,7 @@ export function FleetAvailabilityCard({ data, isLoading }: FleetAvailabilityCard
       {data.map((item) => (
         <div
           key={item.status}
-          className="flex items-center gap-3 rounded-lg border border-border/40 p-3"
+          className="flex items-center gap-3 rounded-lg border border-border/50 p-3"
         >
           <div
             className={cn(

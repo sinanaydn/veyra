@@ -147,7 +147,7 @@ export function BrandFormSheet({
               {...register("logoUrl")}
             />
           </div>
-          <div className="sticky bottom-0 flex justify-end border-t border-border/40 bg-background pt-4">
+          <div className="sticky bottom-0 flex justify-end border-t border-border/50 bg-background pt-4">
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>

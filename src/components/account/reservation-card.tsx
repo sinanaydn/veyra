@@ -45,7 +45,7 @@ export function ReservationCard({
   return (
     <div
       className={cn(
-        "group rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5 transition-colors hover:border-border",
+        "group rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50 transition-colors hover:border-border",
         className
       )}
     >
@@ -82,7 +82,7 @@ export function ReservationCard({
         </div>
       )}
 
-      <div className="mt-3 flex items-center justify-between border-t border-border/40 pt-3">
+      <div className="mt-3 flex items-center justify-between border-t border-border/50 pt-3">
         <span className="text-sm font-semibold">
           {formatCurrency(reservation.grandTotal)}
         </span>

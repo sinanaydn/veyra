@@ -13,7 +13,7 @@ export default function AuthLayout({
     <GuestGuard>
       <div className="flex min-h-svh flex-col bg-background">
         {/* Minimal branded header */}
-        <header className="flex h-14 shrink-0 items-center justify-between border-b border-border/40 px-4 sm:px-6">
+        <header className="flex h-14 shrink-0 items-center justify-between border-b border-border/50 px-4 sm:px-6">
           <Logo />
           <ThemeToggle />
         </header>
@@ -24,7 +24,7 @@ export default function AuthLayout({
         </main>
 
         {/* Minimal footer */}
-        <footer className="flex shrink-0 items-center justify-center border-t border-border/40 px-4 py-4">
+        <footer className="flex shrink-0 items-center justify-center border-t border-border/50 px-4 py-4">
           <p className="text-[11px] text-muted-foreground">
             © {new Date().getFullYear()} Veyra. Tüm hakları saklıdır.
           </p>

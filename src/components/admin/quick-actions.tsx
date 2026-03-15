@@ -32,7 +32,7 @@ export function QuickActions() {
         <Link
           key={action.label}
           href={action.href}
-          className="flex flex-col items-center gap-1.5 rounded-lg border border-border/40 p-3 text-center transition-colors hover:bg-muted/50"
+          className="flex flex-col items-center gap-1.5 rounded-lg border border-border/50 p-3 text-center transition-colors hover:bg-muted/50"
         >
           <action.icon className="h-4 w-4 text-muted-foreground" />
           <span className="text-xs font-medium">{action.label}</span>

@@ -1,8 +1,6 @@
 import { mockReviews } from "@/lib/mocks/reviews";
+import { delay } from "@/lib/utils";
 import type { Review } from "../types/review.types";
-
-const delay = (ms: number = 200) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 export const reviewsService = {
   async getAll(): Promise<Review[]> {

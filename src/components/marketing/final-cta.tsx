@@ -19,8 +19,8 @@ export function FinalCTA() {
           className="relative overflow-hidden rounded-2xl bg-primary px-6 py-16 text-center text-primary-foreground sm:px-12"
         >
           {/* Decorative circles */}
-          <div className="pointer-events-none absolute -left-20 -top-20 h-60 w-60 rounded-full bg-white/5" />
-          <div className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-white/5" />
+          <div className="pointer-events-none absolute -left-20 -top-20 h-60 w-60 rounded-full bg-primary-foreground/5" />
+          <div className="pointer-events-none absolute -bottom-16 -right-16 h-48 w-48 rounded-full bg-primary-foreground/5" />
 
           <h2 className="relative font-heading text-3xl font-bold sm:text-4xl">
             Yolculuğunuz Burada Başlıyor

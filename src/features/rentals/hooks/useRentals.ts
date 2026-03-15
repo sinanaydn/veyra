@@ -4,6 +4,7 @@ import type { ReservationStatus } from "../types/rental.types";
 
 export const rentalKeys = {
   all: ["rentals"] as const,
+  admin: ["rentals", "admin"] as const,
   byUser: (userId: string) => ["rentals", "user", userId] as const,
   detail: (id: string) => ["rentals", id] as const,
   byStatus: (status: ReservationStatus) =>
@@ -18,6 +19,13 @@ export function useRentals() {
   return useQuery({
     queryKey: rentalKeys.all,
     queryFn: () => rentalsService.getAll(),
+  });
+}
+
+export function useAdminRentals() {
+  return useQuery({
+    queryKey: rentalKeys.admin,
+    queryFn: () => rentalsService.getAllForAdmin(),
   });
 }
 

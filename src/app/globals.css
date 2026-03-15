@@ -136,28 +136,31 @@
   --background: oklch(0.155 0.015 260);
   --foreground: oklch(0.93 0.005 85);
 
-  --card: oklch(0.195 0.018 260);
+  /* Card/bg ayrımı: 0.06 delta (önceki 0.04 yetersizdi) */
+  --card: oklch(0.21 0.018 260);
   --card-foreground: oklch(0.93 0.005 85);
 
-  --popover: oklch(0.195 0.018 260);
+  --popover: oklch(0.21 0.018 260);
   --popover-foreground: oklch(0.93 0.005 85);
 
   --primary: oklch(0.78 0.06 260);
   --primary-foreground: oklch(0.155 0.015 260);
 
-  --secondary: oklch(0.24 0.015 260);
+  --secondary: oklch(0.25 0.015 260);
   --secondary-foreground: oklch(0.90 0.005 85);
 
-  --muted: oklch(0.24 0.015 260);
-  --muted-foreground: oklch(0.62 0.01 260);
+  --muted: oklch(0.25 0.015 260);
+  /* Okunabilirlik: 0.62 → 0.66 */
+  --muted-foreground: oklch(0.66 0.01 260);
 
-  --accent: oklch(0.26 0.018 260);
+  --accent: oklch(0.27 0.018 260);
   --accent-foreground: oklch(0.90 0.005 85);
 
   --destructive: oklch(0.62 0.19 22);
 
-  --border: oklch(0.28 0.015 260);
-  --input: oklch(0.28 0.015 260);
+  /* Border kontrastı artırıldı: 0.28 → 0.31 */
+  --border: oklch(0.31 0.015 260);
+  --input: oklch(0.31 0.015 260);
   --ring: oklch(0.78 0.06 260);
 
   --success: oklch(0.60 0.14 155);
@@ -171,13 +174,13 @@
   --chart-4: oklch(0.65 0.10 260);
   --chart-5: oklch(0.55 0.12 30);
 
-  --sidebar: oklch(0.175 0.015 260);
+  --sidebar: oklch(0.18 0.015 260);
   --sidebar-foreground: oklch(0.93 0.005 85);
   --sidebar-primary: oklch(0.78 0.06 260);
   --sidebar-primary-foreground: oklch(0.155 0.015 260);
-  --sidebar-accent: oklch(0.24 0.015 260);
+  --sidebar-accent: oklch(0.25 0.015 260);
   --sidebar-accent-foreground: oklch(0.90 0.005 85);
-  --sidebar-border: oklch(0.28 0.015 260);
+  --sidebar-border: oklch(0.31 0.015 260);
   --sidebar-ring: oklch(0.78 0.06 260);
 }
 
@@ -194,5 +197,18 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-manrope), var(--font-inter), system-ui, sans-serif;
+  }
+
+  /* Native select/date input dark mode — renk şeması uyumu */
+  .dark select,
+  .dark input[type="date"],
+  .dark input[type="time"] {
+    color-scheme: dark;
+  }
+
+  /* Option elemanları — dark bg'de okunabilirlik */
+  .dark option {
+    background-color: oklch(0.21 0.018 260);
+    color: oklch(0.93 0.005 85);
   }
 }

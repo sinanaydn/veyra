@@ -1,8 +1,6 @@
 import { mockLocations } from "@/lib/mocks/locations";
+import { delay } from "@/lib/utils";
 import type { Location, LocationType } from "../types/location.types";
-
-const delay = (ms: number = 200) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 export const locationsService = {
   async getAll(): Promise<Location[]> {

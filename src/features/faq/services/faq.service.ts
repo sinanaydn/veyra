@@ -1,8 +1,6 @@
 import { mockFAQItems } from "@/lib/mocks/faq";
+import { delay } from "@/lib/utils";
 import type { FAQItem, FAQCategory } from "../types/faq.types";
-
-const delay = (ms: number = 200) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 export const faqService = {
   async getAll(): Promise<FAQItem[]> {

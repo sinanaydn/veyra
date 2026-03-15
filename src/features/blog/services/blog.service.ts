@@ -1,8 +1,6 @@
 import { mockBlogPosts } from "@/lib/mocks/blog";
+import { delay } from "@/lib/utils";
 import type { BlogPost } from "../types/blog.types";
-
-const delay = (ms: number = 200) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 export const blogService = {
   async getAll(): Promise<BlogPost[]> {

@@ -181,7 +181,7 @@ export default function AdminModelsPage() {
           ))}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border/60 py-16">
+        <div className="flex flex-col items-center justify-center rounded-lg border border-dashed border-border/70 py-16">
           <Layers className="h-10 w-10 text-muted-foreground/40" />
           <p className="mt-3 text-sm font-medium text-muted-foreground">
             {search || filterBrand || filterCategory
@@ -196,7 +196,7 @@ export default function AdminModelsPage() {
           )}
         </div>
       ) : (
-        <div className="overflow-x-auto rounded-lg border border-border/40">
+        <div className="overflow-x-auto rounded-lg border border-border/50">
           <Table>
             <TableHeader>
               <TableRow>

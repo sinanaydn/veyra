@@ -129,18 +129,18 @@ export function ConfirmationCard() {
       {/* Contact */}
       <div className="flex flex-col gap-3 sm:flex-row">
         <a
-          href={`tel:${APP_CONFIG.phone}`}
+          href={`tel:${APP_CONFIG.contact.phone}`}
           className="flex flex-1 items-center justify-center gap-2 rounded-lg border bg-card px-4 py-3 text-sm font-medium transition-colors hover:bg-accent"
         >
           <Phone className="h-4 w-4 text-primary" />
-          {APP_CONFIG.phone}
+          {APP_CONFIG.contact.phone}
         </a>
         <a
-          href={`mailto:${APP_CONFIG.email}`}
+          href={`mailto:${APP_CONFIG.contact.email}`}
           className="flex flex-1 items-center justify-center gap-2 rounded-lg border bg-card px-4 py-3 text-sm font-medium transition-colors hover:bg-accent"
         >
           <Mail className="h-4 w-4 text-primary" />
-          {APP_CONFIG.email}
+          {APP_CONFIG.contact.email}
         </a>
       </div>
     </div>

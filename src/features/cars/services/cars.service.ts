@@ -1,9 +1,6 @@
 import { mockCars } from "@/lib/mocks/cars";
+import { delay } from "@/lib/utils";
 import type { Car, CarFilters, CarSortOption } from "../types/car.types";
-
-// Simulated delay for realistic loading states
-const delay = (ms: number = 300) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 function applySorting(cars: Car[], sort: CarSortOption): Car[] {
   const sorted = [...cars];
@@ -31,7 +28,7 @@ export const carsService = {
     filters?: CarFilters,
     sort: CarSortOption = "RECOMMENDED"
   ): Promise<Car[]> {
-    await delay();
+    await delay(300);
     let result = [...mockCars];
 
     if (filters) {
@@ -81,17 +78,17 @@ export const carsService = {
   },
 
   async getBySlug(slug: string): Promise<Car | null> {
-    await delay();
+    await delay(300);
     return mockCars.find((c) => c.slug === slug) ?? null;
   },
 
   async getById(id: string): Promise<Car | null> {
-    await delay();
+    await delay(300);
     return mockCars.find((c) => c.id === id) ?? null;
   },
 
   async getFeatured(limit: number = 4): Promise<Car[]> {
-    await delay();
+    await delay(300);
     return [...mockCars]
       .filter((c) => c.availability === "AVAILABLE")
       .sort((a, b) => b.rating - a.rating)
@@ -99,7 +96,7 @@ export const carsService = {
   },
 
   async getSimilar(carId: string, limit: number = 3): Promise<Car[]> {
-    await delay();
+    await delay(300);
     const car = mockCars.find((c) => c.id === carId);
     if (!car) return [];
     return mockCars

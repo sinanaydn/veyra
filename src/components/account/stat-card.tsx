@@ -12,7 +12,7 @@ export function StatCard({ icon: Icon, label, value, className }: StatCardProps)
   return (
     <div
       className={cn(
-        "flex items-center gap-4 rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5",
+        "flex items-center gap-4 rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50",
         className
       )}
     >

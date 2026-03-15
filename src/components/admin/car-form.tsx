@@ -332,7 +332,7 @@ export function CarForm({ car, onSubmit, isSubmitting }: CarFormProps) {
 
       {/* ── Görseller (Placeholder) ── */}
       <Section title="Görseller">
-        <div className="flex items-center justify-center rounded-lg border-2 border-dashed border-border/60 py-10">
+        <div className="flex items-center justify-center rounded-lg border-2 border-dashed border-border/70 py-10">
           <div className="text-center">
             <p className="text-sm font-medium text-muted-foreground">
               Görsel Yükleme
@@ -345,7 +345,7 @@ export function CarForm({ car, onSubmit, isSubmitting }: CarFormProps) {
       </Section>
 
       {/* ── Submit ── */}
-      <div className="sticky bottom-0 flex justify-end gap-2 border-t border-border/40 bg-background pt-4">
+      <div className="sticky bottom-0 flex justify-end gap-2 border-t border-border/50 bg-background pt-4">
         <Button type="submit" disabled={isSubmitting}>
           {isSubmitting ? (
             <>

@@ -1,12 +1,16 @@
 import { mockReservations } from "@/lib/mocks/reservations";
+import { mockUsers } from "@/lib/mocks/users";
+import { delay } from "@/lib/utils";
 import type { Reservation, ReservationStatus } from "../types/rental.types";
 
-const delay = (ms: number = 300) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
+export interface AdminReservation extends Reservation {
+  userName: string;
+  userEmail: string;
+}
 
 export const rentalsService = {
   async getAll(): Promise<Reservation[]> {
-    await delay();
+    await delay(300);
     return [...mockReservations].sort(
       (a, b) =>
         new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
@@ -14,7 +18,7 @@ export const rentalsService = {
   },
 
   async getByUserId(userId: string): Promise<Reservation[]> {
-    await delay();
+    await delay(300);
     return mockReservations
       .filter((r) => r.userId === userId)
       .sort(
@@ -24,17 +28,17 @@ export const rentalsService = {
   },
 
   async getById(id: string): Promise<Reservation | null> {
-    await delay();
+    await delay(300);
     return mockReservations.find((r) => r.id === id) ?? null;
   },
 
   async getByStatus(status: ReservationStatus): Promise<Reservation[]> {
-    await delay();
+    await delay(300);
     return mockReservations.filter((r) => r.status === status);
   },
 
   async getRecent(limit: number = 5): Promise<Reservation[]> {
-    await delay();
+    await delay(300);
     return [...mockReservations]
       .sort(
         (a, b) =>
@@ -83,6 +87,36 @@ export const rentalsService = {
     };
   },
 
+  async getAllForAdmin(): Promise<AdminReservation[]> {
+    await delay(300);
+    return [...mockReservations]
+      .sort(
+        (a, b) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      )
+      .map((r) => {
+        const user = mockUsers.find((u) => u.id === r.userId);
+        return {
+          ...r,
+          userName: user
+            ? `${user.firstName} ${user.lastName}`
+            : "Bilinmeyen",
+          userEmail: user?.email ?? "",
+        };
+      });
+  },
+
+  async updateStatus(
+    id: string,
+    status: ReservationStatus
+  ): Promise<Reservation> {
+    await delay(400);
+    const index = mockReservations.findIndex((r) => r.id === id);
+    if (index === -1) throw new Error("Rezervasyon bulunamadı.");
+    mockReservations[index] = { ...mockReservations[index], status };
+    return mockReservations[index];
+  },
+
   async getStats(): Promise<{
     total: number;
     pending: number;
@@ -92,7 +126,7 @@ export const rentalsService = {
     cancelled: number;
     totalRevenue: number;
   }> {
-    await delay();
+    await delay(300);
     const all = mockReservations;
     return {
       total: all.length,

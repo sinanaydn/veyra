@@ -1,4 +1,5 @@
 import { mockUsers } from "@/lib/mocks/users";
+import { delay } from "@/lib/utils";
 import type {
   LoginPayload,
   RegisterPayload,
@@ -6,9 +7,6 @@ import type {
   Session,
 } from "../types/auth.types";
 import type { User } from "../types/user.types";
-
-const delay = (ms: number = 400) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 const MOCK_TOKEN = "veyra_mock_token_2026";
 const SESSION_KEY = "veyra_session";
@@ -39,7 +37,7 @@ export const authService = {
    * Herhangi bir şifre kabul edilir (mock).
    */
   async login(payload: LoginPayload): Promise<AuthResponse> {
-    await delay();
+    await delay(400);
 
     const user = mockUsers.find(
       (u) => u.email.toLowerCase() === payload.email.toLowerCase()
@@ -60,7 +58,7 @@ export const authService = {
    * E-posta çakışması kontrol edilir.
    */
   async register(payload: RegisterPayload): Promise<AuthResponse> {
-    await delay();
+    await delay(400);
 
     const exists = mockUsers.some(
       (u) => u.email.toLowerCase() === payload.email.toLowerCase()

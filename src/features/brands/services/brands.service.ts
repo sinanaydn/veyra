@@ -1,10 +1,8 @@
 import { mockBrands } from "@/lib/mocks/brands";
 import { mockModels } from "@/lib/mocks/models";
 import { mockCars } from "@/lib/mocks/cars";
+import { delay } from "@/lib/utils";
 import type { Brand } from "../types/brand.types";
-
-const delay = (ms: number = 200) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 export interface BrandWithStats extends Brand {
   modelCount: number;

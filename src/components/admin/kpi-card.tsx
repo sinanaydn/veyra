@@ -21,7 +21,7 @@ export function KPICard({
   return (
     <div
       className={cn(
-        "rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5",
+        "rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50",
         className
       )}
     >

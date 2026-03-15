@@ -96,7 +96,12 @@ export default function BookingPage() {
         <PriceBreakdown />
 
         {/* CTA */}
-        <div className="flex justify-end">
+        <div className="flex items-center justify-between">
+          <Link href={ROUTES.CAR_DETAIL(car.slug)}>
+            <Button variant="ghost" size="lg" className="text-muted-foreground">
+              ← Araca Dön
+            </Button>
+          </Link>
           <Button
             size="lg"
             className="gap-2"

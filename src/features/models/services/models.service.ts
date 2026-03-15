@@ -1,10 +1,8 @@
 import { mockModels } from "@/lib/mocks/models";
 import { mockBrands } from "@/lib/mocks/brands";
 import { mockCars } from "@/lib/mocks/cars";
+import { delay } from "@/lib/utils";
 import type { CarModel } from "../types/model.types";
-
-const delay = (ms: number = 200) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 export interface CarModelWithStats extends CarModel {
   brandName: string;

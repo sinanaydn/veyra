@@ -101,7 +101,7 @@ export default function AccountPage() {
                 </Button>
               </Link>
             }
-            className="rounded-xl border border-dashed border-border/60 py-12"
+            className="rounded-xl border border-dashed border-border/70 py-12"
           />
         )}
       </section>
@@ -112,7 +112,7 @@ export default function AccountPage() {
         <div className="grid gap-3 sm:grid-cols-2">
           <Link
             href={ROUTES.FLEET}
-            className="flex items-center gap-3 rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5 transition-colors hover:border-primary/30 hover:bg-primary/5"
+            className="flex items-center gap-3 rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50 transition-colors hover:border-primary/30 hover:bg-primary/5"
           >
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
               <Plus className="h-4 w-4 text-primary" />
@@ -126,7 +126,7 @@ export default function AccountPage() {
           </Link>
           <Link
             href={ROUTES.ACCOUNT_RESERVATIONS}
-            className="flex items-center gap-3 rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5 transition-colors hover:border-primary/30 hover:bg-primary/5"
+            className="flex items-center gap-3 rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50 transition-colors hover:border-primary/30 hover:bg-primary/5"
           >
             <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10">
               <ListChecks className="h-4 w-4 text-primary" />
@@ -142,7 +142,7 @@ export default function AccountPage() {
       </section>
 
       {/* Support */}
-      <section className="rounded-xl border border-border/60 bg-muted/30 p-5">
+      <section className="rounded-xl border border-border/70 bg-muted/30 p-5">
         <div className="flex items-start gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10">
             <Headphones className="h-4 w-4 text-primary" />

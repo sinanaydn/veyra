@@ -115,7 +115,7 @@ export default function AdminDashboardPage() {
               </Link>
             }
           >
-            <div className="rounded-xl border border-border/60 bg-card ring-1 ring-foreground/5">
+            <div className="rounded-xl border border-border/70 bg-card ring-1 ring-border/50">
               <RecentReservationsTable
                 data={recentRes}
                 isLoading={recentLoading}
@@ -125,7 +125,7 @@ export default function AdminDashboardPage() {
 
           {/* Status Distribution */}
           <AdminSection title="Rezervasyon Durum Dağılımı">
-            <div className="rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5">
+            <div className="rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50">
               <StatusDistribution
                 data={statusDist}
                 isLoading={statusLoading}
@@ -146,7 +146,7 @@ export default function AdminDashboardPage() {
         <div className="space-y-6">
           {/* City Performance */}
           <AdminSection title="Şehir Performansı">
-            <div className="rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5">
+            <div className="rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50">
               <CityPerformance
                 data={cities}
                 isLoading={citiesLoading}
@@ -156,7 +156,7 @@ export default function AdminDashboardPage() {
 
           {/* Recent Activity */}
           <AdminSection title="Son Hareketler">
-            <div className="rounded-xl border border-border/60 bg-card p-4 ring-1 ring-foreground/5">
+            <div className="rounded-xl border border-border/70 bg-card p-4 ring-1 ring-border/50">
               <ActivityFeed
                 data={activity}
                 isLoading={activityLoading}

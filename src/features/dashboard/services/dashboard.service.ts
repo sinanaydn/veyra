@@ -1,11 +1,9 @@
 import { mockReservations } from "@/lib/mocks/reservations";
 import { mockCars } from "@/lib/mocks/cars";
 import { mockUsers } from "@/lib/mocks/users";
+import { delay } from "@/lib/utils";
 import type { Reservation, ReservationStatus } from "@/features/rentals/types/rental.types";
 import type { AvailabilityStatus } from "@/features/cars/types/car.types";
-
-const delay = (ms: number = 250) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
 
 export interface DashboardKPIs {
   totalReservations: number;
@@ -45,7 +43,7 @@ export interface RecentActivity {
 
 export const dashboardService = {
   async getKPIs(): Promise<DashboardKPIs> {
-    await delay();
+    await delay(250);
     const all = mockReservations;
     return {
       totalReservations: all.length,
