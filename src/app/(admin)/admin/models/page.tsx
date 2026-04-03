@@ -69,7 +69,7 @@ export default function AdminModelsPage() {
       result = result.filter(
         (m) =>
           m.name.toLowerCase().includes(q) ||
-          m.brandName.toLowerCase().includes(q)
+          (m.brandName?.toLowerCase() || "").includes(q)
       );
     }
 
@@ -274,8 +274,8 @@ export default function AdminModelsPage() {
         open={deleteOpen}
         onOpenChange={setDeleteOpen}
         model={deleteModel}
-        brandName={deleteModel?.brandName}
-        carCount={deleteModel?.carCount}
+        brandName={deleteModel?.brandName ?? undefined}
+        carCount={deleteModel?.carCount ?? undefined}
       />
     </div>
   );

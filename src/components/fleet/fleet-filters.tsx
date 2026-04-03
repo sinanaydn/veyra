@@ -302,14 +302,15 @@ export function FleetFilters({
                   filters.minPrice ?? 0,
                   filters.maxPrice ?? 10000,
                 ]}
-                onValueChange={(values: number[]) => {
+                onValueChange={(values: number | readonly number[]) => {
+                  const arr = Array.isArray(values) ? values : [values];
                   updateFilter(
                     "minPrice",
-                    values[0] > 0 ? values[0] : undefined
+                    arr[0] && arr[0] > 0 ? arr[0] : undefined
                   );
                   updateFilter(
                     "maxPrice",
-                    values[1] < 10000 ? values[1] : undefined
+                    arr[1] && arr[1] < 10000 ? arr[1] : undefined
                   );
                 }}
               />

@@ -97,7 +97,14 @@ export function Header() {
               <UserMenu
                 userName={`${user?.firstName ?? ""} ${user?.lastName ?? ""}`}
                 isAdmin={isAdmin}
-                onLogout={logout}
+                onLogout={async () => {
+                  try {
+                    await logout();
+                    window.location.href = "/login";
+                  } catch (e) {
+                    console.error("Logout error", e);
+                  }
+                }}
               />
             ) : (
               <div className="flex items-center gap-2">
@@ -203,11 +210,15 @@ function UserMenu({
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onSelect={onLogout}>
-          <div className="flex w-full items-center gap-2 text-destructive">
-            <LogOut className="h-4 w-4" />
-            Çıkış Yap
-          </div>
+        <DropdownMenuItem
+          onClick={() => {
+            localStorage.removeItem("veyra_session");
+            window.location.href = "/login";
+          }}
+          className="flex w-full cursor-pointer items-center gap-2 text-destructive"
+        >
+          <LogOut className="h-4 w-4" />
+          Çıkış Yap
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

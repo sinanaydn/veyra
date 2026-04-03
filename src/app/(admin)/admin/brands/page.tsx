@@ -197,8 +197,8 @@ export default function AdminBrandsPage() {
         open={deleteOpen}
         onOpenChange={setDeleteOpen}
         brand={deleteBrand}
-        modelCount={deleteBrand?.modelCount}
-        carCount={deleteBrand?.carCount}
+        modelCount={deleteBrand?.modelCount ?? undefined}
+        carCount={deleteBrand?.carCount ?? undefined}
       />
     </div>
   );

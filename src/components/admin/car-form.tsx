@@ -89,7 +89,7 @@ export function CarForm({ car, onSubmit, isSubmitting }: CarFormProps) {
     setValue,
     formState: { errors },
   } = useForm<CarFormValues>({
-    resolver: zodResolver(carSchema),
+    resolver: zodResolver(carSchema as any),
     defaultValues: car
       ? {
           brandId: car.brandId,

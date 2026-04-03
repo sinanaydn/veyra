@@ -1,0 +1,28 @@
+﻿src/app/(admin)/admin/cars/page.tsx(133,8): error TS2741: Property 'title' is missing in type '{ children: Element; }' but required in type 'AdminSectionProps'.
+src/app/(admin)/admin/models/page.tsx(72,11): error TS18047: 'm.brandName' is possibly 'null'.
+src/app/(admin)/admin/models/page.tsx(277,9): error TS2322: Type 'string | null | undefined' is not assignable to type 'string | undefined'.
+  Type 'null' is not assignable to type 'string | undefined'.
+src/app/(admin)/admin/models/page.tsx(278,9): error TS2322: Type 'number | null | undefined' is not assignable to type 'number | undefined'.
+  Type 'null' is not assignable to type 'number | undefined'.
+src/app/(admin)/admin/reservations/page.tsx(91,11): error TS18047: 'r.userName' is possibly 'null'.
+src/app/(admin)/admin/reservations/page.tsx(92,11): error TS18047: 'r.userEmail' is possibly 'null'.
+src/components/admin/car-form.tsx(92,5): error TS2322: Type 'Resolver<{ brandId: string; brandName: string; modelId: string; modelName: string; year: unknown; category: "ECONOMY" | "SEDAN" | "SUV" | "EXECUTIVE" | "VIP"; city: string; transmission: "AUTOMATIC" | "MANUAL"; ... 12 more ...; reviewCount: unknown; }, any, { ...; }>' is not assignable to type 'Resolver<{ brandId: string; brandName: string; modelId: string; modelName: string; year: number; category: "ECONOMY" | "SEDAN" | "SUV" | "EXECUTIVE" | "VIP"; city: string; transmission: "AUTOMATIC" | "MANUAL"; ... 12 more ...; reviewCount: number; }, any, { ...; }>'.
+  Types of parameters 'options' and 'options' are incompatible.
+    Type 'ResolverOptions<{ brandId: string; brandName: string; modelId: string; modelName: string; year: number; category: "ECONOMY" | "SEDAN" | "SUV" | "EXECUTIVE" | "VIP"; city: string; transmission: "AUTOMATIC" | "MANUAL"; ... 12 more ...; reviewCount: number; }>' is not assignable to type 'ResolverOptions<{ brandId: string; brandName: string; modelId: string; modelName: string; year: unknown; category: "ECONOMY" | "SEDAN" | "SUV" | "EXECUTIVE" | "VIP"; city: string; transmission: "AUTOMATIC" | "MANUAL"; ... 12 more ...; reviewCount: unknown; }>'.
+      Type 'unknown' is not assignable to type 'number'.
+src/components/admin/car-form.tsx(166,34): error TS2345: Argument of type '(values: { brandId: string; brandName: string; modelId: string; modelName: string; year: number; category: "ECONOMY" | "SEDAN" | "SUV" | "EXECUTIVE" | "VIP"; city: string; transmission: "AUTOMATIC" | "MANUAL"; ... 12 more ...; reviewCount: number; }) => void' is not assignable to parameter of type 'SubmitHandler<TFieldValues>'.
+  Types of parameters 'values' and 'data' are incompatible.
+    Type 'TFieldValues' is not assignable to type '{ brandId: string; brandName: string; modelId: string; modelName: string; year: number; category: "ECONOMY" | "SEDAN" | "SUV" | "EXECUTIVE" | "VIP"; city: string; transmission: "AUTOMATIC" | "MANUAL"; ... 12 more ...; reviewCount: number; }'.
+      Type 'FieldValues' is missing the following properties from type '{ brandId: string; brandName: string; modelId: string; modelName: string; year: number; category: "ECONOMY" | "SEDAN" | "SUV" | "EXECUTIVE" | "VIP"; city: string; transmission: "AUTOMATIC" | "MANUAL"; ... 12 more ...; reviewCount: number; }': brandId, brandName, modelId, modelName, and 17 more.
+src/components/admin/model-form-sheet.tsx(37,15): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(values: readonly ["ECONOMY", "SEDAN", "SUV", "EXECUTIVE", "VIP"], params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+    Object literal may only specify known properties, and 'required_error' does not exist in type '{ error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; }'.
+  Overload 2 of 2, '(entries: Readonly<Record<string, EnumValue>>, params?: string | { error?: string | $ZodErrorMap<$ZodIssueInvalidValue<unknown>> | undefined; message?: string | undefined; } | undefined): ZodEnum<...>', gave the following error.
+    Argument of type 'string[]' is not assignable to parameter of type 'Readonly<Record<string, EnumValue>>'.
+      Index signature for type 'string' is missing in type 'string[]'.
+src/components/fleet/fleet-filters.tsx(305,17): error TS2322: Type '(values: number[]) => void' is not assignable to type '(value: number | readonly number[], eventDetails: SliderRootChangeEventDetails) => void'.
+  Types of parameters 'values' and 'value' are incompatible.
+    Type 'number | readonly number[]' is not assignable to type 'number[]'.
+      Type 'number' is not assignable to type 'number[]'.
+src/components/marketing/reviews-section.tsx(80,62): error TS2339: Property 'userName' does not exist on type 'Review'.
+src/components/marketing/reviews-section.tsx(82,29): error TS2339: Property 'carName' does not exist on type 'Review'.

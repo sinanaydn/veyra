@@ -1,22 +1,12 @@
-import { mockUsers } from "@/lib/mocks/users";
-import { delay } from "@/lib/utils";
+import { authApi } from "@/lib/api/auth.api";
 import type {
   LoginPayload,
   RegisterPayload,
   AuthResponse,
   Session,
 } from "../types/auth.types";
-import type { User } from "../types/user.types";
 
-const MOCK_TOKEN = "veyra_mock_token_2026";
 const SESSION_KEY = "veyra_session";
-
-function createSession(user: User): Session {
-  const expiresAt = new Date(
-    Date.now() + 24 * 60 * 60 * 1000
-  ).toISOString();
-  return { user, token: MOCK_TOKEN, expiresAt };
-}
 
 function persistSession(session: Session): void {
   if (typeof window !== "undefined") {
@@ -31,67 +21,21 @@ function clearPersistedSession(): void {
 }
 
 export const authService = {
-  /**
-   * Mock login — email ile kullanıcı eşleştirilir.
-   * Demo giriş: admin@veyra.com.tr / elif.demir@email.com
-   * Herhangi bir şifre kabul edilir (mock).
-   */
   async login(payload: LoginPayload): Promise<AuthResponse> {
-    await delay(400);
-
-    const user = mockUsers.find(
-      (u) => u.email.toLowerCase() === payload.email.toLowerCase()
-    );
-
-    if (!user) {
-      throw new Error("E-posta adresi veya şifre hatalı.");
-    }
-
-    const session = createSession(user);
-    persistSession(session);
-
-    return { user, token: MOCK_TOKEN };
+    const response = await authApi.login(payload);
+    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+    persistSession({ user: response.user, token: response.token, expiresAt });
+    return response;
   },
 
-  /**
-   * Mock register — yeni kullanıcı oluşturulur (bellekte).
-   * E-posta çakışması kontrol edilir.
-   */
   async register(payload: RegisterPayload): Promise<AuthResponse> {
-    await delay(400);
-
-    const exists = mockUsers.some(
-      (u) => u.email.toLowerCase() === payload.email.toLowerCase()
-    );
-
-    if (exists) {
-      throw new Error("Bu e-posta adresi zaten kayıtlı.");
-    }
-
-    const newUser: User = {
-      id: `user-${Date.now()}`,
-      firstName: payload.firstName,
-      lastName: payload.lastName,
-      email: payload.email,
-      phone: payload.phone,
-      role: "USER",
-      preferredLanguage: "tr",
-      preferredCurrency: "TRY",
-    };
-
-    const session = createSession(newUser);
-    persistSession(session);
-
-    return { user: newUser, token: MOCK_TOKEN };
+    const response = await authApi.register(payload);
+    const expiresAt = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+    persistSession({ user: response.user, token: response.token, expiresAt });
+    return response;
   },
 
-  /**
-   * Mevcut session'ı localStorage'dan yükler.
-   * Gerçek API'de bu /me veya /auth/session endpoint'i olacak.
-   */
   async resolveSession(): Promise<Session | null> {
-    await delay(100);
-
     if (typeof window === "undefined") return null;
 
     const raw = localStorage.getItem(SESSION_KEY);
@@ -103,7 +47,8 @@ export const authService = {
         clearPersistedSession();
         return null;
       }
-      return session;
+      const user = await authApi.getMe();
+      return { user, token: session.token, expiresAt: session.expiresAt };
     } catch {
       clearPersistedSession();
       return null;
@@ -111,7 +56,6 @@ export const authService = {
   },
 
   async logout(): Promise<void> {
-    await delay(100);
     clearPersistedSession();
   },
 };

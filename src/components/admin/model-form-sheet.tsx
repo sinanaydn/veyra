@@ -35,7 +35,7 @@ const modelSchema = z.object({
   brandId: z.string().min(1, "Marka seçiniz"),
   name: z.string().min(2, "Model adı en az 2 karakter olmalı"),
   category: z.enum(["ECONOMY", "SEDAN", "SUV", "EXECUTIVE", "VIP"], {
-    required_error: "Kategori seçiniz",
+    message: "Kategori seçiniz",
   }),
 });
 

@@ -1,54 +1,34 @@
-import { mockBrands } from "@/lib/mocks/brands";
-import { mockModels } from "@/lib/mocks/models";
-import { mockCars } from "@/lib/mocks/cars";
-import { delay } from "@/lib/utils";
+import { brandsApi } from "@/lib/api/brands.api";
 import type { Brand } from "../types/brand.types";
 
 export interface BrandWithStats extends Brand {
-  modelCount: number;
-  carCount: number;
+  modelCount: number | null;
+  carCount: number | null;
 }
 
 export const brandsService = {
   async getAll(): Promise<Brand[]> {
-    await delay();
-    return [...mockBrands];
+    return brandsApi.getAll();
   },
 
   async getAllWithStats(): Promise<BrandWithStats[]> {
-    await delay();
-    return mockBrands.map((b) => ({
-      ...b,
-      modelCount: mockModels.filter((m) => m.brandId === b.id).length,
-      carCount: mockCars.filter((c) => c.brandId === b.id).length,
-    }));
+    const brands = await brandsApi.getAll();
+    return brands.map((b) => ({ ...b, modelCount: null, carCount: null }));
   },
 
   async getById(id: string): Promise<Brand | null> {
-    await delay();
-    return mockBrands.find((b) => b.id === id) ?? null;
+    return brandsApi.getById(id).catch(() => null);
   },
 
   async create(data: Omit<Brand, "id">): Promise<Brand> {
-    await delay(400);
-    const id = `brand-${Date.now()}`;
-    const newBrand: Brand = { ...data, id };
-    mockBrands.push(newBrand);
-    return newBrand;
+    return brandsApi.create(data);
   },
 
   async update(id: string, data: Partial<Brand>): Promise<Brand> {
-    await delay(400);
-    const index = mockBrands.findIndex((b) => b.id === id);
-    if (index === -1) throw new Error("Marka bulunamadı.");
-    mockBrands[index] = { ...mockBrands[index], ...data };
-    return mockBrands[index];
+    return brandsApi.update(id, data);
   },
 
   async remove(id: string): Promise<void> {
-    await delay(300);
-    const index = mockBrands.findIndex((b) => b.id === id);
-    if (index === -1) throw new Error("Marka bulunamadı.");
-    mockBrands.splice(index, 1);
+    return brandsApi.remove(id);
   },
 };

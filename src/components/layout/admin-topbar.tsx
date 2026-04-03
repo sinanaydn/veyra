@@ -68,11 +68,15 @@ export function AdminTopbar() {
               <p className="text-xs text-muted-foreground">{user?.email}</p>
             </div>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onSelect={logout}>
-              <div className="flex items-center gap-2 text-destructive">
-                <LogOut className="h-4 w-4" />
-                Çıkış Yap
-              </div>
+            <DropdownMenuItem
+              onClick={() => {
+                localStorage.removeItem("veyra_session");
+                window.location.href = "/login";
+              }}
+              className="flex w-full cursor-pointer items-center gap-2 text-destructive"
+            >
+              <LogOut className="h-4 w-4" />
+              Çıkış Yap
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

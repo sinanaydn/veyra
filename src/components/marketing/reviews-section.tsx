@@ -77,9 +77,9 @@ export function ReviewsSection() {
                 </p>
 
                 <div className="mt-4 border-t pt-3">
-                  <p className="text-sm font-medium">{review.userName}</p>
+                  <p className="text-sm font-medium">{review.name}</p>
                   <p className="text-xs text-muted-foreground">
-                    {review.carName}
+                    {review.vehicle}
                   </p>
                 </div>
               </motion.div>

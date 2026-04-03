@@ -88,8 +88,8 @@ export default function AdminReservationsPage() {
       result = result.filter(
         (r) =>
           r.reservationCode.toLowerCase().includes(q) ||
-          r.userName.toLowerCase().includes(q) ||
-          r.userEmail.toLowerCase().includes(q) ||
+          (r.userName?.toLowerCase() || "").includes(q) ||
+          (r.userEmail?.toLowerCase() || "").includes(q) ||
           `${r.carBrandName} ${r.carModelName}`.toLowerCase().includes(q)
       );
     }
